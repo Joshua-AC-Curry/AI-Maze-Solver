@@ -1,3 +1,5 @@
+import time
+
 """
 Function for getting a maze from a text file
 
@@ -15,52 +17,97 @@ def openMazeFile(fileName):
 #go to child node
 #remove that from stack
 #keep going while things in stack
+"""
+depth first search algorithm for the maze
 
+params: 
+    maze: the maze as a 2d array
+    start: the cords for the start of the maze
+    end: the cords for the end of the maze
+"""
 def DFS(maze, start, end):
+
+    #Starting timer for the DFS
+    startTime = time.time()
 
     #check if at end of maze
     
+    path = [] #The algorithm has gone
 
-    visited = set()
+    visited = set() #Set of all the visited cords
     
-    stack = []
+    stack = [] #stack of nodes thats to be visited
     
     stack.append(start)
 
     while(stack):
         
         #pop current location from stack
-        start = stack.pop()
+        current = stack.pop()
 
-        if(start == end):
-            print(start)
+        if(current == end):
+            path.append(current)
+            print(path)
+            print(len(path))
+
+            endTime = time.time()
+            runTime = endTime - startTime
+            print(runTime)
+            print("Run Time = " + str(runTime))
+
             return "Found End"
 
-        if(start not in visited):
-            #print(start)
-            visited.add(start)
+        #adding current space to visited set
+        if(current not in visited):
+            path.append(current)
+            visited.add(current)
 
-        #adjacent spaces
-        leftSpace = (start[0] - 1, start[1])
-        rightSpace = (start[0] + 1, start[1])
-        upSpace = (start[0], start[1] - 1)
-        downSpace = (start[0], start[1] + 1)
+        
+        leftSpace = (current[0] - 1, current[1])
+        rightSpace = (current[0] + 1, current[1])
+        upSpace = (current[0], current[1] - 1)
+        downSpace = (current[0], current[1] + 1)
 
-        adjacent = [leftSpace, rightSpace, upSpace, downSpace]
+        adjacent = [leftSpace, rightSpace, upSpace, downSpace] #list of adjacent spaces
 
+        #adding non-visited spaces to the stack
         for space in adjacent:
             if(space not in visited):
                 if(maze[space[0]][space[1]] != '#'):
                     stack.append(space)
 
 
-maze = openMazeFile('maze-Easy.txt')
+"""
+function to test the depth first search algorithm
 
-end = ()
-for point in maze[len(maze) - 1]:
-    if(point == '-'):
-        end = (len(maze)-1, maze[len(maze)-1].index(point))
+"""
+def testDFS():
+    inp = input("Enter Maze ")
 
-print(maze)
+    maze = openMazeFile(inp)
 
-print(DFS(maze, (0, 1), end))
+    #Getting cords for start of maze
+    start = ()
+    for point in maze[0]:
+        if(point == '-'):
+            end = (len(maze)-1, maze[len(maze)-1].index(point))
+
+    #Getting cords for end of maze
+    end = ()
+    for point in maze[len(maze) - 1]:
+        if(point == '-'):
+            end = (len(maze)-1, maze[len(maze)-1].index(point))
+
+    #Outputting the maze
+    print(maze)
+
+    #Outputting the result of the DFS
+    
+
+    print(DFS(maze, (0, 1), end))
+
+    
+
+
+testDFS()
+
