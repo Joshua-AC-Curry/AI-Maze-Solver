@@ -7,6 +7,7 @@ def openMazeFile(fileName):
     params: 
         fileName: the name of the maze file
     """
+    
     maze = []
     with open(fileName, "r") as file:
         for row in file:

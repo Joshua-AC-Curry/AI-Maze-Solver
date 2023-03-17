@@ -7,6 +7,7 @@ def openMazeFile(fileName):
 
     params: fileName: the name of the maze file
     """
+    
     maze = []
     with open(fileName, "r") as file:
         for row in file:
@@ -88,6 +89,11 @@ def aStar(maze, start, end):
 
 
 def testAStar():
+    """
+    function to test the a* algorithm
+
+    """
+
     inp = input("Enter Maze ")
     
     maze = openMazeFile(inp)
