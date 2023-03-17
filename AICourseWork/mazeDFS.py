@@ -1,25 +1,28 @@
 import time
-"""
-Function for getting a maze from a text file
 
-params: fileName: the name of the maze file
-"""
 def openMazeFile(fileName):
+    """
+    Function for getting a maze from a text file
+
+    params: 
+        fileName: the name of the maze file
+    """
     maze = []
     with open(fileName, "r") as file:
         for row in file:
             maze.append(row.strip().split())
     return maze
 
-"""
-depth first search algorithm for the maze
 
-params: 
-    maze: the maze as a 2d array
-    start: the cords for the start of the maze
-    end: the cords for the end of the maze
-"""
 def DFS(maze, start, end):
+    """
+    depth first search algorithm for the maze
+
+    params: 
+        maze: the maze as a 2d array
+        start: the cords for the start of the maze
+        end: the cords for the end of the maze
+    """
 
     #check if at end of maze
     
@@ -61,11 +64,13 @@ def DFS(maze, start, end):
                     stack.append(space)
 
 
-"""
-function to test the depth first search algorithm
-
-"""
 def testDFS():
+    """
+    function to test the depth first search algorithm
+
+    """
+
+    #Getting the users input
     inp = input("Enter Maze ")
 
     maze = openMazeFile(inp)
@@ -91,15 +96,19 @@ def testDFS():
     #Starting timer for the DFS algorithm
     startTime = time.time()
 
-    #Outputting the result of the DFS
+    #running DFS algorithm
     path = DFS(maze, start, end)
-    #print(path)
-    print(len(path))
 
     #Ending timer for the DFS algorithm
     endTime = time.time()
     runTime = endTime - startTime
     print("Run Time = " + str(runTime))
+
+    #Outputting the result of the DFS
+    #print(path)
+    print(len(path))
+
+    
 
 
 print("Starting")
