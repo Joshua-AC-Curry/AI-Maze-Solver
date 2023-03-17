@@ -13,10 +13,6 @@ def openMazeFile(fileName):
             maze.append(row.strip().split())
     return maze
 
-#a star is breadth first search
-#but with a bit of disjtra
-#but instead of distance between nodes its disctance from finish
-#start with making breadthfirst
 
 def heuristic(current, end):
     """
