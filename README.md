@@ -15,3 +15,9 @@ Instructions given are for windows
 - cd to directory containing mazeDFS and mazeAStar
 - for running DFS algorithm enter command python mazeDFS.py
 - for running A* algorithm enter command python AStar.py
+
+<he> Output </h3>
+When running the program it ask the user to enter the name of the maze file. When doing this do not include spaces and be sure to include the file extention. Note the program is designed to work with text files. 
+Here is an example of what to put: maze-Large.txt
+
+After this the program will run the search algorithm. It then outputs the number of spaces in the maze the program has visited, the run time of the program and the length of the path found. If you want to program to output that path itself you'll have to uncommne the print statement on line 109 for mazeDFS.py and line 133 for mazeAStar.py.
