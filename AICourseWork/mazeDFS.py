@@ -25,9 +25,7 @@ def DFS(maze, start, end):
         end: the cords for the end of the maze
     """
 
-    #check if at end of maze
-    
-    path = [] #The algorithm has gone
+    path = [] #Path through the maze
 
     visited = set() #Set of all the visited cords
     
@@ -42,7 +40,9 @@ def DFS(maze, start, end):
 
         if(current == end):
             path.append(current)
-            
+            visited.add(current)
+            print("Number of nodes visited is " , len(visited))
+
             return path
 
         #adding current space to visited set
@@ -107,7 +107,7 @@ def testDFS():
 
     #Outputting the result of the DFS
     #print(path)
-    print(len(path))
+    print("Length of Path is ", len(path))
 
     
 

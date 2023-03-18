@@ -60,6 +60,8 @@ def aStar(maze, start, end):
                 pathList.append(path[current])
                 current = path[current]
 
+            print("The number of spaces visitied is " , len(path))
+
             return pathList[::-1]
         
         leftSpace = (current[0] - 1, current[1])
