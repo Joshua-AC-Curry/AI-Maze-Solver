@@ -131,7 +131,7 @@ def testAStar():
 
     #Outputting the result of the a*
     #print(path)
-    print(len(path))
+    print("Lenght of path found is ", len(path))
    
 
 print("Starting")
